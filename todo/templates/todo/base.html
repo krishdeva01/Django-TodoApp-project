@@ -1,0 +1,59 @@
+{% if user.is_authenticated %}
+
+<h3 id="log"> Logged in as {{ user.username }}</h3>
+<a id="create"  href="{% url 'createtodo' %}">Create</a><br><br>
+<a id="current" href="{% url 'currenttodos' %}">Current</a><br><br>
+<a id='completed' href="{% url 'completedtodos' %}">Completed</a><br><br>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<style>
+    #log{
+        color:#777;
+        margin-bottom: 40px;
+    }
+    #logout{
+        color:rgb(255, 51, 0);
+        padding-right: 30px;
+        margin: 0 40% 10px;
+    }
+    #create{
+        color:rgb(255, 0, 34);
+        margin: 50%;
+        
+    }
+    #current{
+        color: green;
+        margin: 50%;
+    }
+    #completed{
+        color: blue;
+        margin: 50%;
+    }
+</style>
+
+<form action="{% url 'logoutuser' %}" method="POST">
+{% csrf_token %}
+<button id="logout" type="submit">Log out</button>
+</form>
+
+{% else %}
+
+<a id="sig" href="{% url 'signupuser' %}">SignUp</a><br>
+<a id="sig" href="{% url 'loginuser' %}">Login</a>
+
+<style>
+    #sig{
+        color:blue;
+        text-decoration: none;
+        font-size: large;
+        font-weight: bold;
+        margin: 50%;
+        
+    }
+</style>
+
+{% endif %}
+<br>
+<br>
+
+{% block content %} {% endblock %}

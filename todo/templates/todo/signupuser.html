@@ -1,0 +1,84 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel='stylesheet' href="static/signupuser.css">
+        <link rel="stylesheet" href="{% static 'todo/signupuser.css' %}" />
+
+
+        <title>Krish Anjel</title>
+    </head>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+        <div id="container" align='center'>
+         <h1>Sign Up</h1>
+         
+         <div id="user">
+             <i class="fa fa-user" ></i>
+            <input type="text" name='username' placeholder="username">
+        </div>
+        <div id="email">
+            <i class="fa fa-lock" ></i>
+            <input type="text" name='password' placeholder="Create password">
+        </div>
+        <div id="lock">
+            <i class="fa fa-eye" ></i>
+            <input type="text" name='password' placeholder="Enter password again">
+        </div>
+        <button id="bt" >Sign up</button>
+        <h4>Or sign up using social platforms</h4>
+        <div id="social-icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-linkedin"></i>
+            <i class="fa fa-google"></i>
+            <i class="fa fa-twitter"></i>
+        </div>
+        <div id="foot">
+            <a>Already have an account?</a>
+        </div>
+        <div id="mode">
+            <button id="lt" onclick="light()">Light mode</button>
+            <button id="drk" onclick="dark()">Dark mode</button>
+
+        </div>
+        </div>
+        </form>
+        
+    </body>
+    <script type="text/javascript">
+    var color = document.documentElement.style;
+
+    function light(){
+        color.setProperty('--bg1','#c2c2c4');
+        color.setProperty('--bg2','#e2e2e4');
+        color.setProperty('--boxShadow','#a1a1a3');
+        color.setProperty('--Shadow1','#848486');
+        color.setProperty('--Shadow2','#fcfcfe');
+        color.setProperty('--SforIcon1','#ececee');
+        color.setProperty('--SforIcon2','#8a8b8e');
+
+        document.getElementById('lt').style.display='none';
+        document.getElementById('drk').style.display='block';
+
+    }
+    function dark(){
+        color.setProperty('--bg1','#040406');
+        color.setProperty('--bg2','#323234');
+        color.setProperty('--boxShadow','#010203');
+        color.setProperty('--Shadow1','#040406');
+        color.setProperty('--Shadow2','#444446');
+        color.setProperty('--SforIcon1','#2a2b2c');
+        color.setProperty('--SforIcon2','#020305');
+
+        
+        document.getElementById('lt').style.display='block';
+        document.getElementById('drk').style.display='none';
+
+
+    }
+    
+    </script>
+</html>
